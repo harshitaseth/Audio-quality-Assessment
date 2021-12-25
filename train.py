@@ -12,7 +12,7 @@ import argparse
 import utils
 import torch
 from torch import nn
-from model import CNN_BLSTM
+from model import NORESQA
 from torch.utils.data import DataLoader
 import json
 from getdata import getdataset
@@ -52,12 +52,14 @@ def train(rank, output_directory, epochs, learning_rate,
     criterion = None
 
     # build model
-    model = CNN_BLSTM().cuda()
+    # model = NORESQA().cuda() 
+    model = NORESQA()
 
     # optimizer
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
     # apex
+   
     if fp16_run:
         from apex import amp
         model, optimizer = amp.initialize(model, optimizer, opt_level='O1')
@@ -243,6 +245,7 @@ if __name__ == "__main__":
     parser.add_argument('-r', '--rank', type=int, default=0,
                         help='rank of process for distributed')
 
+    import pdb;pdb.set_trace()
     args = parser.parse_args()
     with open(args.config) as f:
         data = f.read()

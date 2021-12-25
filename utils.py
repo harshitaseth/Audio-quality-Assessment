@@ -4,7 +4,7 @@ import scipy
 import librosa
 import numpy as np
 from tqdm import tqdm
-import tensorflow as tf
+#import tensorflow as tf
 from os.path import join
 import random
 random.seed(1984)
