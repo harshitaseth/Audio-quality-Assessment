@@ -255,10 +255,10 @@ if __name__ == "__main__":
     global loaddata_config
     loaddata_config = config["loaddata_config"]
 
-    # num_gpus = torch.cuda.device_count()
-    # assert num_gpus < 2
-    # torch.backends.cudnn.enabled = True
-    # torch.backends.cudnn.benchmark = False
+    num_gpus = torch.cuda.device_count()
+    assert num_gpus < 2
+    torch.backends.cudnn.enabled = True
+    torch.backends.cudnn.benchmark = False
     min_epoch = train(args.rank, **train_config)
     # testing
     test(train_config, loaddata_config, min_epoch, train_config["fp16_run"])
