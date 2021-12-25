@@ -12,7 +12,7 @@ import argparse
 import utils
 import torch
 from torch import nn
-from model import CNN_BLSTM
+from model import NORESQA
 from torch.utils.data import DataLoader
 import json
 from getdata import getdataset
